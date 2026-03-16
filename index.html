@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
 
+    <style>
+
+
+body{
+  background-color: black;
+}
+h1{
+  text-align: center;
+  color: white;
+  font-size: 40px;
+}
+      .box {
+        background-color: skyblue;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+      }
+      .main {
+        width: 700px;
+        height: 500px;
+        border: 10px solid red;
+        position: relative;
+        margin: auto;
+  box-shadow: rgba(206, 206, 206, 0.25) 0px 14px 28px, rgba(214, 211, 211, 0.22) 0px 10px 10px;
+      }
+    </style>
+  </head>
+  <body>
+
+
+    <h1>Box Navigator</h1>
+    <div class="main">
+      <div class="box" id="box"></div>
+    </div>
+
+    <script>
+      var box = document.getElementById("box");
+      var main = document.querySelector(".main");
+
+      var x = 50;
+      var y = 50;
+      var step = 20;
+      var direction = null;
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowUp") {
+          direction = "up";
+        }
+
+        if (e.key === "ArrowDown") {
+          direction = "down";
+        }
+
+        if (e.key === "ArrowRight") {
+          direction = "right";
+        }
+
+        if (e.key === "ArrowLeft") {
+          direction = "left";
+        }
+      });
+
+      function Movebox() {
+        if (direction === "up") {
+          y -= step;
+        }
+        if (direction === "down") {
+          y += step;
+        }
+        if (direction === "left") {
+          x -= step;
+        }
+        if (direction === "right") {
+          x += step;
+        }
+
+        box.style.left = x + "px";
+        box.style.top = y + "px";
+      }
+
+      setInterval(Movebox, 100);
+    </script>
+  </body>
+</html>
